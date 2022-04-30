@@ -27,7 +27,7 @@ public class CSVApp {
     }
 
     private static void writeString(String json) {
-        try (Writer writer = new FileWriter("data.json")){
+        try (Writer writer = new FileWriter("CSVtoJSON.json")) {
             writer.write(json);
         } catch (IOException e) {
             e.printStackTrace();
@@ -37,7 +37,8 @@ public class CSVApp {
     private static String listToJson(List<Employee> list) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
-        Type listType = new TypeToken<List<Employee>>() {}.getType();
+        Type listType = new TypeToken<List<Employee>>() {
+        }.getType();
         String json = gson.toJson(list, listType);
         return json;
     }
