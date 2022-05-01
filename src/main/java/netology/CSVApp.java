@@ -23,18 +23,18 @@ public class CSVApp {
 
         List<Employee> list = parseCSV(columnMapping, fileName);
         String json = listToJson(list);
-        writeString(json);
+        writeString(json, "CSVtoJSON.json");
     }
 
-    private static void writeString(String json) {
-        try (Writer writer = new FileWriter("CSVtoJSON.json")) {
+    public static void writeString(String json, String filePath) {
+        try (Writer writer = new FileWriter(filePath)) {
             writer.write(json);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private static String listToJson(List<Employee> list) {
+    public static String listToJson(List<Employee> list) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
         Type listType = new TypeToken<List<Employee>>() {
